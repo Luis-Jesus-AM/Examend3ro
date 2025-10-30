@@ -1,19 +1,71 @@
-from flask import Flask, render_template, 
+from flask import Flask, render_template, request, redirect, url_for
 
+# Inicialización de la aplicación Flask
 app = Flask(__name__)
+app.secret_key = 'clave_secreta_para_seguridad' 
 
-@app.route("/")
-def base():
-    return render_template("forma. html")
+@app.route("/", methods=['GET', 'POST'])
+def formulario_y_calculo():
 
-@app.route("/forma")
-def froma():
-    return render_template("forma. html")
+    if request.method == 'POST':
+        try:
+            peso = float(request.form.get('peso', 0))
+            altura = float(request.form.get('altura', 0))
+            edad = float(request.form.get('edad', 0))
+            genero = request.form.get('genero')
+            actividad = request.form.get('actividad')
+            
+
+            if not all([peso, altura, edad, genero, actividad]):
+                 return render_template("forma.html", error="Por favor, completa todos los campos.")
+            
+            if genero == 'hombre':
+                tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + 5
+            elif genero == 'mujer':
+                tmb = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
+            else:
+                return render_template("forma.html", error="Género inválido.")
+)
+            factores = {
+                'sedentario': 1.2,       
+                'ligera': 1.375,         
+                'moderada': 1.55,        
+                'alta': 1.725            
+            }
+            
+            factor_actividad = factores.get(actividad)
+            
+            if factor_actividad is None:
+                 return render_template("forma.html", error="Nivel de actividad inválido.")
+
+            get_total = tmb * factor_actividad
+            
+            tmb_formateado = f"{tmb:.2f}"
+            get_formateado = f"{get_total:.2f}"
+
+            return render_template(
+                "re.html", 
+                tmb=tmb_formateado, 
+                get=get_formateado, 
+                peso=peso, 
+                altura=altura, 
+                edad=edad
+            )
+
+        except ValueError:
+          
+            return render_template("forma.html", error="Por favor, introduce valores numéricos válidos en Peso, Altura y Edad.")
+        except Exception:
+            return render_template("forma.html", error="Ocurrió un error inesperado. Asegúrate de que los valores sean positivos.")
+
+   
+    return render_template("forma.html", error=None)
 
 @app.route("/re")
 def re():
-    return render_template("re. html")
+   
+    return redirect(url_for('formulario_y_calculo'))
 
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     app.run(debug=True)
