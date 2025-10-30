@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 
 {% block contenido %}
+<h2>Resultado del cálculo</h2>
 
+<ul class="list-group">
+    <li class="list-group-item"><strong>Peso:</strong> {{ peso }} kg</li>
+    <li class="list-group-item"><strong>Altura:</strong> {{ altura }} cm</li>
+    <li class="list-group-item"><strong>Edad:</strong> {{ edad }} años</li>
+    <li class="list-group-item"><strong>Género:</strong> {{ genero }}</li>
+    <li class="list-group-item"><strong>Nivel de actividad:</strong> {{ actividad }}</li>
+    <li class="list-group-item"><strong>TMB:</strong> {{ tmb }}</li>
+    <li class="list-group-item"><strong>GET:</strong> {{ get_total }}</li>
+</ul>
+
+<a href="/tmb" class="btn btn-primary mt-3">Calcular de nuevo</a>
 {% endblock %}
-
