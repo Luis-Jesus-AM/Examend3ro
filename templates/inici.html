@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Plantillas{% endblock %}</title>
+    <style>
+
+        body { padding-top: 60px; } 
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Menu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('ani') }}">Animales Exoticos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('vei') }}">Veiculos antiguos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('mun') }}">Maravillas del mundo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('ace') }}">Acerca de...</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% if 'usuario_logueado' in session %}
+                        <li class="nav-item">
+                            <span class="nav-link text-success">
+                                Bienvenido, <strong>{{ session['usuario_logueado'] }}</strong>
+                            </span>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="btn btn-outline-danger" href="{{ url_for('cerrar_sesion') }}">Cerrar Sesión</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+
+                            <a class="nav-link" href="{{ url_for('registro') }}">Registrate</a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="btn btn-success" href="{{ url_for('inici') }}">Iniciar Sesión</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-4">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="mb-4">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <section>
+            {% block contenido %}
+            {% endblock %}
+        </section>
+    </div>
+
+    <footer class="mt-5 py-3 bg-light text-center">
+        <h6 class="text-center">Todos los derechos reservados</h6>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>

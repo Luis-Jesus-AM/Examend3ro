@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<div class="bg-light p-4 rounded">
+  <h1 class="text-center mb-4">Vehículos Antiguos</h1>
+  <p class="text-center fs-5 mb-5">
+    A lo largo de la historia, los vehículos han sido una parte fundamental del desarrollo humano. Desde los primeros carruajes motorizados hasta los clásicos que marcaron época, cada uno cuenta una historia de innovación, diseño y cultura.
+  </p>
+
+  <!-- Vehículos Antiguos por Marca -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-5 mb-4">
+      <div class="card h-100">
+        <img src="static/img/Ford Model T (1908).jpg" class="card-img-top" alt="Ford Model T">
+        
+        <div class="card-body">
+          <h4 class="card-title text-center">Ford Model T (1908)</h4>
+          <p class="card-text text-center fs-6">
+            Considerado el primer automóvil producido en masa, el Ford Model T revolucionó la industria automotriz. Fue diseñado por Henry Ford y permitió que muchas personas accedieran a un vehículo propio por primera vez.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 mb-4">
+      <div class="card h-100">
+        <img src="static/img/1957.jpg" class="card-img-top" alt="Chevrolet Bel Air">
+        <div class="card-body">
+          <h4 class="card-title text-center">Chevrolet Bel Air (1957)</h4>
+          <p class="card-text text-center fs-6">
+            Un ícono del diseño automotriz estadounidense, el Bel Air de 1957 es recordado por sus aletas traseras y detalles cromados. Representa el auge del estilo y la prosperidad de la posguerra.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-5 mb-4">
+      <div class="card h-100">
+        <img src="static/img/pulguita.jpg" class="card-img-top" alt="Volkswagen Beetle">
+        <div class="card-body">
+          <h4 class="card-title text-center">Volkswagen Beetle (1938)</h4>
+          <p class="card-text text-center fs-6">
+            Conocido como el "Vocho" en muchos países de habla hispana, este compacto alemán se convirtió en uno de los autos más vendidos del mundo. Su diseño simple y confiable lo hizo muy popular durante décadas.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5 mb-4">
+      <div class="card h-100">
+        <img src="static/img/image.webp" class="card-img-top" alt="Citroën 2CV">
+        <div class="card-body">
+          <h4 class="card-title text-center">Citroën 2CV (1948)</h4>
+          <p class="card-text text-center fs-6">
+            Este vehículo francés fue diseñado para ser económico y funcional, ideal para el campo. Su suspensión flexible y bajo consumo lo convirtieron en un favorito en Europa durante décadas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-5 mb-4">
+      <div class="card h-100">
+        <img src="static/img/ultimo.jpg" class="card-img-top" alt="Rolls-Royce Silver Ghost">
+        <div class="card-body">
+          <h4 class="card-title text-center">Rolls-Royce Silver Ghost (1907)</h4>
+          <p class="card-text text-center fs-6">
+            Famoso por su suavidad y fiabilidad, el Silver Ghost fue considerado el mejor coche del mundo en su época. Representa el lujo y la excelencia en la ingeniería británica.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
